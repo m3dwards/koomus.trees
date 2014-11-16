@@ -32,8 +32,7 @@
     )
   (stop [this]
     (graphite/stop (:gr this))
-    this
-    ))
+    this))
 
 (defn new-metrics  [host]
   (map->Metrics  {:host host}))
