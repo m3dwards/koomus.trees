@@ -1,4 +1,4 @@
-(defproject koomus.trees "0.1"
+(defproject koomus.trees "0.1.0-SNAPSHOT"
   :description "A component for easily adding metrics to app"
   :url "https://github.com/maxwe789/koomus.trees"
   :dependencies [[org.clojure/clojure "1.5.1"]
