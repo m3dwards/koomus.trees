@@ -3,4 +3,4 @@
             [com.stuartsierra.component :as component]))
 
 (deftest test-jvm-metrics
-  (is (= 74 (+ 2 2))))
+  (is (= 4 (+ 2 2))))
