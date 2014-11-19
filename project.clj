@@ -20,10 +20,10 @@
                                   [org.clojure/tools.namespace "0.2.7"]]}}
   :deploy-repositories  [["releases" 
                                 {:url "https://releases.clojars.org/repo/"
-                                :username :env/username
-                                :password :env/password}]
+                                :username :env/cusername
+                                :password :env/cpassword}]
                          ["snapshots" 
                                 {:url "https://clojars.org/repo/"
-                                :username env/username
-                                :password env/password}]]
+                                :username :env/cusername
+                                :password :env/cpassword}]]
   )
