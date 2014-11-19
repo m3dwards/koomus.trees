@@ -1,4 +1,8 @@
-(defproject koomus.trees "0.1.0-SNAPSHOT"
+(def feature-version "0.1")
+(def build-version (or (System/getenv "SNAP_PIPELINE_COUNTER") "HANDBUILT"))
+(def release-version (str feature-version ".0" "-SNAPSHOT"))
+
+(defproject koomus.trees release-version
   :description "A component for easily adding metrics to app"
   :url "https://github.com/maxwe789/koomus.trees"
   :dependencies [[org.clojure/clojure "1.5.1"]
@@ -13,4 +17,13 @@
                    :plugins [[lein-midje "3.1.3" ]
                              [lein-environ "1.0.0"]]
                    :dependencies [[midje "1.6.3"]
-                                  [org.clojure/tools.namespace "0.2.7"]]}})
+                                  [org.clojure/tools.namespace "0.2.7"]]}}
+  :deploy-repositories  [["releases" 
+                                {:url "https://releases.clojars.org/repo/"
+                                :username :env/username
+                                :password :env/password}]
+                         ["snapshots" 
+                                {:url "https://clojars.org/repo/"
+                                :username env/username
+                                :password env/password}]]
+  )
