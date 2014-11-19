@@ -3,7 +3,7 @@
 (def release-version (str feature-version "." build-version "-SNAPSHOT"))
 
 (defproject koomus.trees release-version
-  :description "A component for easily adding metrics to app"
+  :description "A component for adding metrics to app"
   :url "https://github.com/maxwe789/koomus.trees"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [com.stuartsierra/component "0.2.2"]
