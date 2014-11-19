@@ -1,6 +1,6 @@
 (def feature-version "0.1")
 (def build-version (or (System/getenv "SNAP_PIPELINE_COUNTER") "HANDBUILT"))
-(def release-version (str feature-version ".0" "-SNAPSHOT"))
+(def release-version (str feature-version "." build-version "-SNAPSHOT"))
 
 (defproject koomus.trees release-version
   :description "A component for easily adding metrics to app"
