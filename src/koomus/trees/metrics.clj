@@ -1,4 +1,4 @@
-(ns bulk-loader.metrics
+(ns koomus.trees.metrics
   (:require 
     [com.stuartsierra.component :as component]
     [metrics.jvm.core :refer [instrument-jvm]]
