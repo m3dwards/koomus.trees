@@ -9,8 +9,9 @@
     [com.codahale.metrics MetricFilter]))
 
 (defn- generate-reporter
-  [reg host prefix]
+  [reg host port prefix]
   (graphite/reporter reg {:host host
+                          :port port
                           :prefix prefix
                           :rate-unit TimeUnit/SECONDS
                           :duration-unit TimeUnit/MILLISECONDS

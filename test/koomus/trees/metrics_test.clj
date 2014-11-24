@@ -15,10 +15,11 @@
 (facts "Metrics tests"
   
   (fact "generate-reporter should return a new graphite reporter" 
-    (generate-reporter ..reg.. ..host.. ..prefix..) => irrelevant
+    (generate-reporter ..reg.. ..host.. ..port.. ..prefix..) => irrelevant
     (provided 
       (graphite/reporter 
         ..reg.. {:host ..host..
+                 :port ..port..
                  :prefix ..prefix..
                  :rate-unit TimeUnit/SECONDS
                  :duration-unit TimeUnit/MILLISECONDS
