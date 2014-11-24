@@ -9,9 +9,9 @@
     [com.codahale.metrics MetricFilter]))
 
 (defn- generate-reporter
-  [reg host]
+  [reg host prefix]
   (graphite/reporter reg {:host host
-                          :prefix "koomus-metrics"
+                          :prefix prefix
                           :rate-unit TimeUnit/SECONDS
                           :duration-unit TimeUnit/MILLISECONDS
                           :filter MetricFilter/ALL}))
