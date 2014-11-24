@@ -16,11 +16,11 @@
   
   (fact "generate-reporter should return a new graphite reporter" 
     (let [host "127.0.0.1" reg (new-registry)]
-      (generate-reporter reg host) => irrelevant
+      (generate-reporter reg host prefix) => irrelevant
       (provided 
         (graphite/reporter 
           reg {:host host
-               :prefix "koomus-metrics"
+               :prefix prefix
                :rate-unit TimeUnit/SECONDS
                :duration-unit TimeUnit/MILLISECONDS
                :filter MetricFilter/ALL})  => irrelevant)))
