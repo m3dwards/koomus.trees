@@ -11,6 +11,7 @@
            [com.codahale.metrics MetricFilter]))
 
 (def generate-reporter #'metrics/generate-reporter)
+(def init-reporter #'metrics/init-reporter)
 
 (facts "Metrics tests"
   
@@ -24,6 +25,11 @@
                  :rate-unit TimeUnit/SECONDS
                  :duration-unit TimeUnit/MILLISECONDS
                  :filter MetricFilter/ALL})  => irrelevant))
-  
+ 
+  (fact "init reporter should start the report"
+    (init-reporter anything) => irrelevant
+    (provided 
+      (generate-reporter anything anything) => irrelevant)) 
+
 )
 
