@@ -9,7 +9,7 @@
     [com.codahale.metrics MetricFilter]))
 
 (defn- generate-reporter
-  [reg host port prefix]
+  [reg {:keys [host port prefix]}]
   (graphite/reporter reg {:host host
                           :port port
                           :prefix prefix
@@ -18,10 +18,10 @@
                           :filter MetricFilter/ALL}))
 
 (defn- init-reporter
-  [{:keys [host]}]
+  [this]
   (let [reg (new-registry)]
         (instrument-jvm reg)
-        (let [reporter (generate-reporter reg host)]
+        (let [reporter (generate-reporter reg this)]
           (graphite/start reporter 10)
           reporter)))
 
