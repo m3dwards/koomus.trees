@@ -6,8 +6,9 @@
             [koomus.trees.metrics :as metrics]
             [clojure.reflect :refer [reflect]]
             [clojure.pprint :refer [pprint]]
-            [metrics.reporters.graphite :as graphite]
-            ))
+            [metrics.reporters.graphite :as graphite])
+  (:import [java.util.concurrent TimeUnit]
+           [com.codahale.metrics MetricFilter]))
 
 (def generate-reporter #'metrics/generate-reporter)
 
@@ -17,7 +18,12 @@
     (let [host "127.0.0.1" reg (new-registry)]
       (generate-reporter reg host) => irrelevant
       (provided 
-        (graphite/reporter reg anything) => irrelevant)))
+        (graphite/reporter 
+          reg {:host host
+               :prefix "koomus-metrics"
+               :rate-unit TimeUnit/SECONDS
+               :duration-unit TimeUnit/MILLISECONDS
+               :filter MetricFilter/ALL})  => irrelevant)))
   
 )
 
