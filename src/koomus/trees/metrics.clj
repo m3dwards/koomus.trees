@@ -17,6 +17,16 @@
                           :duration-unit TimeUnit/MILLISECONDS
                           :filter MetricFilter/ALL}))
 
+(defn test-thing
+  [something]
+  (graphite/reporter something 10)
+  )
+
+(defn test-other-thing
+  [something]
+  (graphite/start something 10)
+  )
+
 (defn- init-reporter
   [this]
   (let [reg (new-registry)]
@@ -24,7 +34,7 @@
         (let [reporter (generate-reporter reg this)]
           
           
-          ;;(graphite/start reporter 10)
+          (graphite/start reporter 10)
           
           reporter)))
 

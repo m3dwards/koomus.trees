@@ -28,12 +28,24 @@
                  :duration-unit TimeUnit/MILLISECONDS
                  :filter MetricFilter/ALL})  => irrelevant))
  
-  (fact "init reporter should start the report"
-    (init-reporter anything) => irrelevant
+  ;;(fact "init reporter should start the report"
+  ;;  (init-reporter anything) => irrelevant
+  ;;  (provided 
+  ;;    (graphite/start anything anything) => irrelevant
+  ;;    (generate-reporter anything anything) => irrelevant
+  ;;    (graphite/reporter anything anything) => irrelevant
+  ;;    )) 
+
+  (fact "test thing"
+    (metrics/test-thing anything) => irrelevant
+    (provided 
+      (graphite/reporter anything anything) => irrelevant
+      )) 
+  
+  (fact "other test thing"
+    (metrics/test-other-thing anything) => irrelevant
     (provided 
       (graphite/start anything anything) => irrelevant
-      (generate-reporter anything anything) => irrelevant
-      (graphite/reporter anything anything) => irrelevant
       )) 
 
 )
