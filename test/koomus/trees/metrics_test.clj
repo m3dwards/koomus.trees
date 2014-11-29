@@ -16,7 +16,7 @@
 ;;notice this typed param! try removing the type and see the test pass
 (defn typed-params
   [^long something]
-  (println something)
+  (+ something something)
   )
 
 (defn run-this
@@ -62,9 +62,9 @@
   ;;    ))
 
   (fact "test thing that might work"
-    (run-this anything) => irrelevant
+    (run-this 10) => irrelevant
     (provided 
-      (typed-params anything) => irrelevant
+      (typed-params 10) => irrelevant
       )) 
 
 
