@@ -22,7 +22,10 @@
   (let [reg (new-registry)]
         (instrument-jvm reg)
         (let [reporter (generate-reporter reg this)]
-          (graphite/start reporter 10)
+          
+          
+          ;;(graphite/start reporter 10)
+          
           reporter)))
 
 (defn- start

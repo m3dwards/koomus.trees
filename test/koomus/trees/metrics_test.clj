@@ -31,7 +31,10 @@
   (fact "init reporter should start the report"
     (init-reporter anything) => irrelevant
     (provided 
-      (generate-reporter anything anything) => irrelevant)) 
+      (graphite/start anything anything) => irrelevant
+      (generate-reporter anything anything) => irrelevant
+      (graphite/reporter anything anything) => irrelevant
+      )) 
 
 )
 
