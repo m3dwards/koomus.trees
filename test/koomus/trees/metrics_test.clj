@@ -15,7 +15,7 @@
 
 ;;notice this typed param! try removing the type and see the test pass
 (defn typed-params
-  [^long something]
+  [something]
   (+ something something)
   )
 
@@ -39,13 +39,13 @@
                  :duration-unit TimeUnit/MILLISECONDS
                  :filter MetricFilter/ALL})  => irrelevant))
  
-  ;;(fact "init reporter should start the report"
-  ;;  (init-reporter anything) => irrelevant
-  ;;  (provided 
-  ;;    (graphite/start anything anything) => irrelevant
-  ;;    (generate-reporter anything anything) => irrelevant
-  ;;    (graphite/reporter anything anything) => irrelevant
-  ;;    ))
+  (fact "init reporter should start the report"
+    (init-reporter anything) => irrelevant
+    (provided 
+      ;;(graphite/start anything anything) => irrelevant
+      (generate-reporter anything anything) => irrelevant
+      (graphite/reporter anything anything) => irrelevant
+      ))
 
   ;;This works
   (fact "test thing"

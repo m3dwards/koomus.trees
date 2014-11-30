@@ -8,7 +8,7 @@
     [java.util.concurrent TimeUnit]
     [com.codahale.metrics MetricFilter]))
 
-(defn- generate-reporter
+(defn generate-reporter
   [reg {:keys [host port prefix]}]
   (graphite/reporter reg {:host host
                           :port port
@@ -34,7 +34,7 @@
         (let [reporter (generate-reporter reg this)]
           
           
-          (graphite/start reporter 10)
+          ;;(graphite/start reporter 10)
           
           reporter)))
 
