@@ -9,9 +9,10 @@
     [com.codahale.metrics MetricFilter]))
 
 (defn- generate-reporter
-  [reg host]
+  [reg {:keys [host port prefix]}]
   (graphite/reporter reg {:host host
-                          :prefix "koomus-metrics"
+                          :port port
+                          :prefix prefix
                           :rate-unit TimeUnit/SECONDS
                           :duration-unit TimeUnit/MILLISECONDS
                           :filter MetricFilter/ALL}))
@@ -35,12 +36,14 @@
   (graphite/stop gr)
   this)
 
-(defrecord Metrics [host]
+(defrecord Metrics [host port prefix]
   component/Lifecycle
   (start [this]
     (start this))
   (stop [this]
     (stop this)))
 
-(defn new-metrics  [host]
-  (map->Metrics {:host host}))
+(defn new-metrics  [host port prefix]
+  (map->Metrics {:host host
+                 :port port
+                 :prefix prefix}))

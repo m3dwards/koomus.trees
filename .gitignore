@@ -10,3 +10,4 @@ pom.xml.asc
 *.swp
 .DS_Store
 /META-INF
+*.swo
