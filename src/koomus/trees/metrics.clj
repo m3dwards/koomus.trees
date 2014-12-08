@@ -18,18 +18,18 @@
                           :filter MetricFilter/ALL}))
 
 (defn- init-reporter
-  [{:keys [host]}]
+  [this]
   (let [reg (new-registry)]
-        (instrument-jvm reg)
-        (let [reporter (generate-reporter reg host)]
-          (graphite/start reporter 10)
-          reporter)))
+    (instrument-jvm reg)
+    (let [reporter (generate-reporter reg this)]
+      (graphite/start reporter 10)
+      reporter)))
 
 (defn- start
   [{:keys [gr] :as this}]
   (if gr
-      (do (graphite/start gr 10) this)
-      (->> this init-reporter (assoc this :gr))))
+    (do (graphite/start gr 10) this)
+    (->> this init-reporter (assoc this :gr))))
 
 (defn- stop
   [{:keys [gr] :as this}]
@@ -43,7 +43,7 @@
   (stop [this]
     (stop this)))
 
-(defn new-metrics  [host port prefix]
+(defn new-metrics [host port prefix]
   (map->Metrics {:host host
                  :port port
                  :prefix prefix}))
