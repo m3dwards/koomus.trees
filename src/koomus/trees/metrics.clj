@@ -25,11 +25,18 @@
       (graphite/start reporter 10)
       reporter)))
 
+(defn- convert-port
+  [port]
+  (when port
+    (java.lang.Integer/parseInt port)))
+
 (defn- start
-  [{:keys [gr] :as this}]
-  (if gr
-    (do (graphite/start gr 10) this)
-    (->> this init-reporter (assoc this :gr))))
+  [{:keys [gr port host prefix] :as this}]
+  (if (and port host prefix)
+    (if gr
+      (do (graphite/start gr 10) this)
+      (->> this init-reporter (assoc this :gr)))
+    this))
 
 (defn- stop
   [{:keys [gr] :as this}]
@@ -45,5 +52,5 @@
 
 (defn new-metrics [host port prefix]
   (map->Metrics {:host host
-                 :port port
+                 :port (convert-port port)
                  :prefix prefix}))
