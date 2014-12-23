@@ -3,7 +3,8 @@
     [com.stuartsierra.component :as component]
     [metrics.jvm.core :refer [instrument-jvm]]
     [metrics.reporters.graphite :as graphite]
-    [metrics.core :refer [new-registry]])
+    [metrics.core :refer [new-registry]]
+    [clojure.string :refer [blank?]])
   (:import 
     [java.util.concurrent TimeUnit]
     [com.codahale.metrics MetricFilter]))
@@ -27,12 +28,12 @@
 
 (defn- convert-port
   [port]
-  (when port
+  (when (not (blank? port))
     (java.lang.Integer/parseInt port)))
 
 (defn- start
   [{:keys [gr port host prefix] :as this}]
-  (if (and port host prefix)
+  (if (not (or (nil? port) (blank? host) (blank? prefix)))
     (if gr
       (do (graphite/start gr 10) this)
       (->> this init-reporter (assoc this :gr)))
